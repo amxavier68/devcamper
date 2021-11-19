@@ -9,14 +9,10 @@ dotenv.config({ path: './config/config.env' });
 app.use(express.json());
 app.set('view engine', 'pug');
 
-const pugTest = pug.render('p Hello World!');
+app.use('/static', express.static('/public'));
 
 app.get('/', (req,res) => {
-  res.status(200).send(pugTest);
-});
-
-app.get('/test', (req,res) => {
-  res.status(200).send(pugTest);
+  res.status(200).render('index', { title: 'DevCamper', content: 'Welcome to DevCamper'});
 });
 
 const PORT = process.env.PORT || 5000;
