@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 const app = express();
 const pug = require('pug');
 const packageInfo = require('../package.json');
+const pkgVersion = packageInfo.version;
 
 // Route Files
 const bootcamps = require('../routes/bootcamps');
@@ -15,7 +16,13 @@ app.set('view engine', 'pug');
 
 app.use('/static', express.static('/public'));
 
-const pkgVersion = packageInfo.version;
+// Middlewares
+// Custom
+const logger = (req, res, next) => {
+  req.hello = 'Hello World!';
+  console.log('Middleware called');
+  next();
+}
 
 // Mount routers
 app.use(`/api/${pkgVersion}/bootcamps`, bootcamps);
