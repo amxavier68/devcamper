@@ -2,11 +2,11 @@
 // @route   GET /api/1.0.0/bootcamps 
 // @access  Public
 exports.getBootcamps = (req,res, next) => {
-  res.status(200).json({ 
+  res.status(200).render('index', { 
     title: 'DevCamper', 
     header: 'Welcome to DevCamper',
-    content: 'This route shows all bootcamps',
-    hello: req.hello
+    content: 'This route shows all bootcamps'
+    
   });
   next();
 }
@@ -15,10 +15,10 @@ exports.getBootcamps = (req,res, next) => {
 // @route   GET /api/1.0.0/bootcamps/:id
 // @access  Public
 exports.getBootcamp = (req, res, next) => {
-  res.status(200).json({ 
-    success: true, 
-    message: 'This is the create bootcamp route', 
-    data: { id: req.params.id }
+  res.status(200).render('newBootcamp',{ 
+    title: 'DevCamper', 
+    header: 'This is the create bootcamp route', 
+    content: 'Adding new bootcamp'
   })
   next();
 }
@@ -27,11 +27,10 @@ exports.getBootcamp = (req, res, next) => {
 // @route   POST /api/1.0.0/bootcamps
 // @access  Private
 exports.createBootcamp = (req, res, next) => {
-  res.status(200).json({ 
+  res.status(200).render('newBootcamp', { 
     title: 'DevCamper', 
-    header: 'Welcome to DevCamper',
-    content: 'This route shows all bootcamps',
-    data : { id: req.params.id }
+    header: 'This is the create bootcamp route', 
+    content: 'Adding new bootcamp'
   });
   next();
 }
