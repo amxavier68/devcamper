@@ -35,7 +35,7 @@ if (NODE_ENV === 'development') {
   app.use(morgan('combined'));
 }
 
-app.use(errorHandler());
+app.use(errorHandler);
 
 const server = app.listen(PORT, () => console.log(`Listening to port: ${PORT} Running in ${NODE_ENV} mode.`));
 
